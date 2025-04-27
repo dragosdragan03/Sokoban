@@ -55,6 +55,51 @@ Performance varies based on map structure, suggesting that the efficiency of eac
 - A checker traverses all test cases to verify solutions
 - The reset threshold for LRTA* was optimized from 50 to 200 iterations, significantly improving performance (reducing explored states from ~260,000 to ~66,000 in complex maps)
 
+## Performance Visualization
+
+The repository includes tools to visualize key performance metrics comparing both algorithms:
+
+<div align="center">
+  <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 30px;">
+    <div style="margin-right: 30px;">
+      <img src="./images/time.png" alt="Execution Time Comparison" width="650"/>
+      <p><em>Figure 2: Comparison of execution time between Beam Search and LRTA* across different maps.</em></p>
+    </div>
+    <div>
+      <img src="./images/iterations.png" alt="Iteration Count Comparison" width="650"/>
+      <p><em>Figure 3: Comparison of iteration counts required by Beam Search and LRTA* to solve each map.</em></p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <div>
+      <img src="./images/expansion.png" alt="Node Expansion Comparison" width="800"/>
+      <p><em>Figure 4: Comparison of node expansions performed by each algorithm during the search process.</em></p>
+    </div>
+  </div>
+</div>
+
+These visualizations help understand the performance trade-offs between the two algorithms across different map complexities. As shown in the charts, LRTA* typically requires more iterations but may perform fewer node expansions in certain scenarios, while Beam Search generally has faster execution times but may explore more states.
+
+### Solution Animations
+
+The `images` directory also contains animated GIFs showing the step-by-step solution process for various maps:
+
+<div>
+  <div style="display: flex; flex-direction: row; justify-content: center;">
+    <div style="margin-right: 20px;">
+      <img src="./images/beam_search_super_hard_map1.gif" alt="Beam Search Solution" width="400"/>
+      <p><em>Figure 7: Beam Search solving a complex Sokoban puzzle.</em></p>
+    </div>
+    <div>
+      <img src="./images/lrta_star_super_hard_map1.gif" alt="LRTA* Solution" width="400"/>
+      <p><em>Figure 8: LRTA* algorithm finding a solution path.</em></p>
+    </div>
+  </div>
+</div>
+
+These animations provide a visual demonstration of how each algorithm navigates through the state space and approaches the solution differently. They help illustrate the search patterns and efficiency of movement between the two algorithms.
+
 ## Usage
 
 To run the solver on all test maps:
@@ -69,38 +114,6 @@ To test specific algorithms:
 python sokoban_solver.py --algorithm beam_search
 python sokoban_solver.py --algorithm lrta_star
 ```
-
-## Performance Visualization
-
-The repository includes tools to visualize key performance metrics comparing both algorithms:
-
-### Execution Time Comparison
-![Execution Time Comparison](images/time.png)
-*Figure 1: Comparison of execution time between Beam Search and LRTA* across different maps.*
-
-### Iteration Count Comparison
-![Iteration Count Comparison](images/iterations.png)
-*Figure 2: Comparison of iteration counts required by Beam Search and LRTA* to solve each map.*
-
-### Node Expansion Comparison
-![Node Expansion Comparison](images/expansion.png)
-*Figure 3: Comparison of node expansions performed by each algorithm during the search process.*
-
-These visualizations help understand the performance trade-offs between the two algorithms across different map complexities. As shown in the charts, LRTA* typically requires more iterations but may perform fewer node expansions in certain scenarios, while Beam Search generally has faster execution times but may explore more states.
-
-### Solution Animations
-
-The `images` directory also contains animated GIFs showing the step-by-step solution process for various maps:
-
-![Beam Search Solution](./images/beam_search_super_hard_map1.gif)
-
-*Figure 4: Beam Search solving a complex Sokoban puzzle.*
-
-![LRTA* Solution](./images/lrta_star_super_hard_map1.gif)
-
-*Figure 5: LRTA* algorithm finding a solution path.*
-
-These animations provide a visual demonstration of how each algorithm navigates through the state space and approaches the solution differently. They help illustrate the search patterns and efficiency of movement between the two algorithms.
 
 ## Requirements
 - Python 3.6+
